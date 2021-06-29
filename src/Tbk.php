@@ -21,9 +21,9 @@ class Tbk extends Module
     public function itemRecommends($numIid, $fields, $count = 20, $platform = 1)
     {
         return $this->exec('taobao.tbk.item.recommend.get', [
-            'fields' => $fields,
-            'num_iid' => $numIid,
-            'count' => $count,
+            'fields'   => $fields,
+            'num_iid'  => $numIid,
+            'count'    => $count,
             'platform' => $platform,
         ]);
     }
@@ -39,7 +39,7 @@ class Tbk extends Module
     {
         return $this->exec('taobao.tbk.item.info.get', [
             'num_iids' => $numIids,
-            'ip' => $ip,
+            'ip'       => $ip,
             'platform' => $platform,
         ]);
     }
@@ -67,9 +67,9 @@ class Tbk extends Module
     public function shopRecommends($userId, $fields, $count = 20, $platform = 1)
     {
         return $this->exec('taobao.tbk.shop.recommend.get', [
-            'user_id' => $userId,
-            'fields' => $fields,
-            'count' => $count,
+            'user_id'  => $userId,
+            'fields'   => $fields,
+            'count'    => $count,
             'platform' => $platform,
         ]);
     }
@@ -85,9 +85,9 @@ class Tbk extends Module
     public function favoritesItems($adZoneId, $favoritesId, $fields, array $params = [])
     {
         return $this->exec('taobao.tbk.uatm.favorites.item.get', array_merge([
-            'adzone_id' => $adZoneId,
+            'adzone_id'    => $adZoneId,
             'favorites_id' => $favoritesId,
-            'fields' => $fields,
+            'fields'       => $fields,
         ], $params));
     }
 
@@ -114,10 +114,10 @@ class Tbk extends Module
     public function tqg(string $adZoneId, string $fields, string $startTime, string $endTime, array $params = [])
     {
         return $this->exec('taobao.tbk.ju.tqg.get', array_merge([
-            'adzone_id' => $adZoneId,
-            'fields' => $fields,
+            'adzone_id'  => $adZoneId,
+            'fields'     => $fields,
             'start_time' => $startTime,
-            'end_time' => $endTime
+            'end_time'   => $endTime,
         ], $params));
     }
 
@@ -206,8 +206,8 @@ class Tbk extends Module
     {
         return $this->exec('taobao.tbk.dg.newuser.order.sum', array_merge([
             'activity_id' => $activityId,
-            'page_no' => $params['page_no'] ?? 1,
-            'page_size' => $params['page_size'] ?? 20,
+            'page_no'     => $params['page_no'] ?? 1,
+            'page_size'   => $params['page_size'] ?? 20,
         ], $params));
     }
 
@@ -234,14 +234,14 @@ class Tbk extends Module
     public function createTlj(string $adZoneId, string $itemId, $name, $totalNum, $perFace, array $params = [])
     {
         return $this->exec('taobao.tbk.dg.vegas.tlj.create', array_merge([
-            'adzone_id' => $adZoneId,
-            'item_id' => $itemId,
-            'total_num' => $totalNum,
-            'name' => $name,
-            'per_face' => $perFace,
+            'adzone_id'                => $adZoneId,
+            'item_id'                  => $itemId,
+            'total_num'                => $totalNum,
+            'name'                     => $name,
+            'per_face'                 => $perFace,
             'user_total_win_num_limit' => $params['user_total_win_num_limit'] ?? 1,
-            'security_switch' => $params['security_switch'] ?? true,
-            'send_start_time' => $params['send_start_time'] ?? date('Y-m-d H:i:s'),
+            'security_switch'          => $params['security_switch'] ?? true,
+            'send_start_time'          => $params['send_start_time'] ?? date('Y-m-d H:i:s'),
         ], $params));
     }
 
@@ -255,7 +255,7 @@ class Tbk extends Module
     public function activityLink($adZoneId, $promotionSceneId, array $params = [])
     {
         return $this->exec('taobao.tbk.activitylink.get', array_merge([
-            'adzon_id' => $adZoneId,
+            'adzon_id'           => $adZoneId,
             'promotion_scene_id' => $promotionSceneId,
         ], $params));
     }
@@ -271,9 +271,9 @@ class Tbk extends Module
     public function activityLinkTool($adZoneId, $siteId, $promotionSceneId, array $params = [])
     {
         return $this->exec('taobao.tbk.sc.activitylink.toolget', array_merge([
-            'adzone_id' => $adZoneId,
+            'adzone_id'          => $adZoneId,
             'promotion_scene_id' => $promotionSceneId,
-            'site_id' => $siteId,
+            'site_id'            => $siteId,
         ], $params));
     }
 
@@ -285,7 +285,7 @@ class Tbk extends Module
     public function punishOrder(array $option = [])
     {
         return $this->exec('taobao.tbk.dg.punish.order.get', [
-            'af_order_option' => $option
+            'af_order_option' => $option,
         ]);
     }
 
@@ -321,5 +321,17 @@ class Tbk extends Module
         return $this->exec('taobao.tbk.dg.wish.list', ['param0' => ['with_list_id' => $wishId]]);
     }
 
+
+    /**
+     * 高效转链数据
+     * @param string $adZoneId $adZoneId 广告位
+     * @param string $siteId 备案的网站id
+     * @param $params https://open.taobao.com/api.htm?spm=a219a.7386797.0.0.6940669as2pVEV&source=search&docId=28625&docType=2
+     * @return array
+     */
+    public function privilegeGet($adZoneId, $siteId, $params)
+    {
+        return $this->exec('taobao.tbk.privilege.get', array_merge($params, ['adzone_id' => $adZoneId, 'site_id' => $siteId]));
+    }
 
 }

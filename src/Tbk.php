@@ -321,11 +321,10 @@ class Tbk extends Module
         return $this->exec('taobao.tbk.dg.wish.list', ['param0' => ['with_list_id' => $wishId]]);
     }
 
-
     /**
      * 高效转链数据
-     * @param string $adZoneId $adZoneId 广告位
-     * @param string $siteId 备案的网站id
+     * @param string $adZoneId $adZoneId 推广位id，mm_xx_xx_xx pid三段式中的第三段
+     * @param string $siteId 备案的网站id ，mm_xx_xx_xx pid三段式中的第二段
      * @param $params https://open.taobao.com/api.htm?spm=a219a.7386797.0.0.6940669as2pVEV&source=search&docId=28625&docType=2
      * @return array
      */

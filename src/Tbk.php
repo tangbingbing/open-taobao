@@ -333,4 +333,14 @@ class Tbk extends Module
         return $this->exec('taobao.tbk.privilege.get', array_merge($params, ['adzone_id' => $adZoneId, 'site_id' => $siteId]));
     }
 
+    /**
+     * 淘宝客-公用-长链转短链
+     * @param $params https://open.taobao.com/api.htm?docId=27832&docType=2&scopeId=12340
+     * @return array
+     */
+    public function tbKGetSpread($params)
+    {
+        return $this->exec('taobao.tbk.spread.get', $params);
+    }
+
 }

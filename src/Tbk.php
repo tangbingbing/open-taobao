@@ -335,12 +335,11 @@ class Tbk extends Module
 
     /**
      * 淘宝客-公用-长链转短链
-     * @param $params https://open.taobao.com/api.htm?docId=27832&docType=2&scopeId=12340
+     * @param string $url https://open.taobao.com/api.htm?docId=27832&docType=2&scopeId=12340
      * @return array
      */
-    public function tbKGetSpread($params)
+    public function tbKGetSpread(string $url)
     {
-        return $this->exec('taobao.tbk.spread.get', $params);
+        return $this->exec('taobao.tbk.spread.get', ['requests' => json_encode(['url' => $url])]);
     }
-
 }

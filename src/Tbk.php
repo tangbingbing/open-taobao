@@ -342,4 +342,24 @@ class Tbk extends Module
     {
         return $this->exec('taobao.tbk.spread.get', ['requests' => json_encode(['url' => $url])]);
     }
+
+    /**
+     *淘宝客-服务商-所有订单查询
+     * @param string https://open.taobao.com/api.htm?docId=43755&docType=2&scopeId=16322
+     * @return array
+     */
+    public function GetTbKScOrderDetails(array $params)
+    {
+        return $this->exec('taobao.tbk.sc.order.details.get', $params);
+    }
+
+    /**
+     *淘宝客-服务商-维权退款订单查询
+     * @param string https://open.taobao.com/api.htm?docId=43874&docType=2&scopeId=16322
+     * @return array
+     */
+    public function GetTbKScRelationRefund(array $params)
+    {
+        return $this->exec('taobao.tbk.sc.relation.refund', $params);
+    }
 }

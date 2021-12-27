@@ -11,6 +11,23 @@ namespace Qbhy\OpenTaobao;
 class Tbk extends Module
 {
     /**
+     * 创建授权
+     * @param $params
+     * $params = [
+     *      "code"          => $code,
+     *       "grant_type"   => "authorization_code",
+     *      "client_id"     => $appKey,
+     *      "client_secret" => $appSecretKey,
+     *      "redirect_uri"  =>$redirect_uri,
+     * ];
+     * @return array
+     */
+    public function authTokenCreate($params)
+    {
+        return $this->exec('taobao.top.auth.token.create', $params);
+    }
+
+    /**
      * 淘宝客-公用-商品关联推荐
      * @param string $numIid 商品Id
      * @param string $fields 需返回的字段列表

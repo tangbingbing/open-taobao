@@ -19,7 +19,7 @@ class Http extends \Hanson\Foundation\Http
     public function exec($method, array $data = [])
     {
         return $this->decodeResponse(
-            $this->post('http://gw.api.taobao.com/router/rest', $this->buildParams(array_merge($data, compact('method'))))
+            $this->post('https://gw.api.taobao.com/router/rest', $this->buildParams(array_merge($data, compact('method'))))
         );
     }
 
